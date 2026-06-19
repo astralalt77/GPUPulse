@@ -1,0 +1,29 @@
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+Copyright (C) 2026 GPUPulse Contributors
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+---
+
+**Why GPLv3?**
+
+GPUPulse is licensed under the GNU GPLv3 so that it remains free for everyone.
+
+- You are free to use, study, modify, and redistribute the software.
+- If anyone modifies GPUPulse and distributes it (including selling it), they **must** provide the complete corresponding source code under the same license.
+- This prevents people from taking the code, closing it, and selling it without giving back improvements.
+
+This matches the goal: free for everyone, while making it difficult for someone to "steal and sell" a proprietary version.

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install GPUPulse
+Comment=One-command installer for GPUPulse (builds and installs as system package)
+Exec=bash -c 'cd "$(dirname "%k")" && bash install.sh; echo "Done. Press Enter to close this window..."; read'
+Icon=system-software-install
+Terminal=true
+Categories=System;Utility;
+Keywords=install;GPUPulse;setup;
+MimeType=
+NoDisplay=false
+StartupNotify=true
+Path=

@@ -1,0 +1,14 @@
+# GPUPulse - Lightweight GPU + System Monitor
+# Install with: pip install -r requirements.txt
+# 
+# For lighter install on Ubuntu/Mint, prefer distro packages first where possible:
+#   sudo apt install python3-pyqt6 python3-psutil
+# Then pip install the rest in a venv.
+
+PySide6>=6.7
+pyqtgraph>=0.13.7
+psutil>=5.9
+nvidia-ml-py>=12.0   # Only needed for NVIDIA GPUs; app works without it
+
+# Note: Keep this list minimal. The app is designed to use very little CPU/RAM itself.
+# Recommended: Run with poll interval >= 1s when doing heavy AI workloads.

@@ -1,0 +1,4 @@
+# For building standalone / AppImage
+pyinstaller>=6.0
+# Optional for better AppImage
+# appimage-builder or use external tools

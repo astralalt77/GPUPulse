@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GPUPulse
+Comment=Lightweight GPU and system monitor for Linux
+Exec=/usr/bin/gpupulse
+Icon=utilities-system-monitor
+Terminal=false
+Categories=System;Monitor;Utility;
+Keywords=GPU;monitor;system;task;AI;inference;
+StartupNotify=true
