@@ -1,0 +1,11 @@
+# This is the full git commit command with all the added text from before.
+# If you need to use it (e.g. for amend or reference), copy from here.
+
+git commit -m "Initial commit: GPUPulse v0.3.0
+
+- Lightweight real-time GPU + system monitor
+- NVIDIA + onboard/iGPU support
+- Processes with Device column and GPU/CPU filters
+- One-command .deb installer
+- Tray, compact view, settings, renice/kill
+- GPLv3"
