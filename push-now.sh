@@ -1,27 +1,27 @@
 #!/bin/bash
-# Reliable push script for divergent histories.
-# Edit only the TOKEN line.
+# Reliable push for this project.
+# Only edit the TOKEN line.
 
 TOKEN="ghp_PASTE_YOUR_TOKEN_HERE"
 
 REMOTE="https://${TOKEN}@github.com/astralalt77/GPUPulse.git"
 
-echo "Configuring pull behavior..."
+echo "Setting pull config..."
 git config pull.rebase false
 
-echo "Setting temp remote..."
+echo "Temp remote..."
 git remote set-url origin "$REMOTE"
 
 echo "Fetching..."
 git fetch origin
 
-echo "Merging remote (allowing unrelated histories)..."
-git merge origin/main --allow-unrelated-histories -m "Merge remote initial commit"
+echo "Merging remote initial commit (preferring local files)..."
+git merge origin/main --allow-unrelated-histories -X ours -m "Merge remote initial commit"
 
 echo "Pushing..."
 git push -u origin main
 
-echo "Resetting remote..."
+echo "Resetting remote to clean..."
 git remote set-url origin https://github.com/astralalt77/GPUPulse.git
 
-echo "Done."
+echo "Success! Check https://github.com/astralalt77/GPUPulse"
