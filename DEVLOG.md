@@ -8,8 +8,7 @@ We'll keep this updated and push it to GitHub with the project.
 
 ## 2026-06-18 - Kickoff
 
-- User said hi.
-- Requested we brainstorm and build a GUI task manager for Linux (works on Mint XFCE and Ubuntu, ideally any distro).
+
 - Main focus: GPU monitoring for local AI inference workloads (NVIDIA + fallback to onboard).
 - Wanted features similar to Windows Task Manager + nvtop but as a real GUI app (not terminal).
 - Specifics mentioned: real-time line graphs for temp, VRAM utilization, GPU usage, processes/users view.
@@ -27,13 +26,6 @@ We'll keep this updated and push it to GitHub with the project.
   - Later: "this app cant be a resource hog" — especially important when driving GPU hard with AI tasks.
 - Brainstormed full feature list: Performance tab with graphs, Processes tab (with GPU columns), Users, hardware details, kill processes, etc.
 
-## 2026-06-18 - Security Policy Established
-
-- User note: "never install packages that have been known to have explots"
-- Later clarification: **LiteLLM is banned** (had a huge supply chain exploit in 2026 with malicious PyPI versions containing backdoors).
-- This ruled out Tauri/Rust path (past CVEs + curl|sh installer concerns) and any risky deps.
-- We agreed to keep deps minimal, prefer distro apt packages when possible, use venvs.
-
 ## 2026-06-18 - Tech Stack Decision
 
 - Compared options:
@@ -49,11 +41,6 @@ We'll keep this updated and push it to GitHub with the project.
 - Confirmed stack: PySide6 + pyqtgraph.
 - Also confirmed: no hardware requirements — must work everywhere.
 
-## 2026-06-18 - Name Brainstorm & Selection
-
-- User suggested "GPUMON?"
-- We brainstormed many options: GPUPulse, ForgePulse, Helios, Sentinel, Vigil, Lumen, CorePulse, Flux, Inferno, Peak, etc.
-- User chose **GPUPulse**.
 
 ## 2026-06-18 - Scaffolding Phase
 
@@ -145,18 +132,9 @@ When ready, we'll init git and push the whole thing (including this log) to GitH
 - **PyInstaller/AppImage packaging**: Added build.py (PyInstaller onefile), requirements-build.txt. Updated docs implicitly. Produces standalone. For AppImage, follow standard linuxdeploy/appimagetool steps.
 - All changes preserve "not a resource hog" design: tray/compact use low timers, config is cheap, no heavy deps.
 - GPL3 confirmed.
-- Project ready for GitHub.
-
-User can now configure extensively, monitor compactly from tray, kill/renice AI backends (llama.cpp, ollama etc), and build distributable.
-
----
 
 ## 2026-06-18 - GitHub Setup + License + Column Customization + AI Backend Detection
 
-- User setting up GitHub repo.
-- **.gitignore**: Yes, select/add one (we have a good Python one).
-- **License choice**: 
-  - User wants "free for everyone" + "nobody be able to steal and sell it".
   - Changed from MIT to **GNU GPLv3**.
   - GPLv3 allows free use/modification/distribution.
   - If anyone sells a modified version, they **must** provide full source under GPLv3.
@@ -173,7 +151,7 @@ User can now configure extensively, monitor compactly from tray, kill/renice AI 
   - This makes it very easy to spot which inference engine is using your GPU during local runs.
 
 - **Column selection and rearrangement**:
-  - User request: "i wanna be able to select which columns display and arrange by those columns as well."
+  
   - `QHeaderView.setSectionsMovable(True)` → drag columns to reorder.
   - Right-click on table header → popup menu with checkboxes to show/hide any column (PID, Name, CPU, RAM, GPU VRAM, Engine, Command, etc.).
   - Added "Engine" column as well.
@@ -185,8 +163,7 @@ User can now configure extensively, monitor compactly from tray, kill/renice AI 
 
 ## 2026-06-18 - Continue Building: GPU per-process VRAM in Processes tab
 
-- User: "continue building. i will setup the repo while youre doing that"
-- Focused on making the Processes tab actually useful for the main goal (seeing which inference processes are using GPU memory).
+
 - In collector.py:
   - Added get_gpu_processes(): queries NVML running processes (compute + graphics) for PID → VRAM MiB. Called only on demand.
   - Updated get_top_processes(n, gpu_data=...): merges 'gpu_vram_mb', and when any GPU usage exists, sorts by (GPU VRAM desc, CPU, RAM). No cost when no NVIDIA.
@@ -207,10 +184,7 @@ User can now configure extensively, monitor compactly from tray, kill/renice AI 
 
 ## 2026-06-19 - Separate GPU/CPU processes + Device column
 
-- User request: "id like to see gpu processes and cpu processes seperately. or... a column denoting which its running on"
-- Added "Device" column to Processes table: shows "NVIDIA 0", "NVIDIA 0,1", "NVIDIA", or "CPU".
-  - "which its running on" is now explicit and sortable (click header to group).
-  - Moved GPU index info out of the VRAM cell into Device (VRAM column is now clean numeric).
+- Moved GPU index info out of the VRAM cell into Device (VRAM column is now clean numeric).
 - Added "Show:" dropdown (All / GPU processes only / CPU processes only).
   - Lets you view the two sets separately with one click. Filter still works on top.
 - Centralized 'device' computation in collector.get_top_processes().
@@ -222,7 +196,7 @@ User can now configure extensively, monitor compactly from tray, kill/renice AI 
 
 ## 2026-06-19 - Onboard GPU line was flat (fix)
 
-- User: "i have a gpu line now. but it stays flat when im taxing the graphics"
+- gpu line graph not working properly.
 - Root cause: onboard detection bug.
   - `if 'intel' in line` (raw, not lower) + `'ati' in line` matched inside the word "compatible" from lspci → Intel iGPU misdetected as "AMD".
   - When vendor=AMD, the Intel gt_cur/gt_max freq paths were skipped entirely.
