@@ -1,0 +1,43 @@
+GPUPulse - How to push to GitHub (short version)
+
+Step 1: Create the repo on GitHub
+---------------------------------
+Go to: https://github.com/new
+- Repository name: gpupulse
+- Public
+- Leave everything else UNCHECKED (no README, no gitignore, no license)
+- Click "Create repository"
+
+Step 2: Edit your username in the helper script
+-----------------------------------------------
+Run this to open the file:
+    nano setup-remote.sh
+
+Change this line:
+    GITHUB_USER="YOUR_GITHUB_USERNAME_HERE"
+
+Save with Ctrl+O then Enter, then Ctrl+X
+
+Step 3: Run the helper
+----------------------
+    bash setup-remote.sh
+
+It will add the remote for you.
+
+Step 4: Push
+------------
+Copy and run this ONE line:
+
+    git push -u origin main
+
+That's it.
+
+If it asks for password, use a GitHub Personal Access Token instead of your password.
+
+To create a token: https://github.com/settings/tokens
+(Select "repo" scope)
+
+After the first push you can just type:
+    git push
+
+Done!
